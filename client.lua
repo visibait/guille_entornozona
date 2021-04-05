@@ -40,7 +40,7 @@ Citizen.CreateThread(function()
 
                 if dist < Config.DistanceToEntorno then
                     if done[k] ~= true then
-                        TriggerEvent('chat:addMessage', {args = {'Entorno de zona: ', {"ID de entorno: " .. v.id .. " " , " Entorno: " .. v.text}}, color = {200, 20, 20}})
+                        TriggerEvent('chat:addMessage', {args = {'Zone message: ', {"ID: " .. v.id .. " " , " Message: " .. v.text}}, color = {200, 20, 20}})
                         done[k] = true
                     end
                 else
@@ -55,7 +55,6 @@ Citizen.CreateThread(function()
                     if v.time * 60 < timetodelete[k] then
                         TriggerServerEvent('guille_entornozona:deletebytime', v.id)
                         timetodelete[k] = 0
-                        print("borrandoentorno")
                     end
                 end
             end
