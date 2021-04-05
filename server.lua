@@ -25,7 +25,7 @@ AddEventHandler('onResourceStart', function(resourceName)
     end
 end)
 
-RegisterCommand('borrartodosentornos', function(source, args, rawCommand)
+RegisterCommand('deleteallmessages', function(source, args, rawCommand)
     local xPlayer = ESX.GetPlayerFromId(source)
     local xPlayers = ESX.GetPlayers() 
     if xPlayer.getGroup() == 'admin' then
@@ -39,7 +39,7 @@ RegisterCommand('borrartodosentornos', function(source, args, rawCommand)
 
 end)
 
-RegisterCommand('entornozona', function(source, args, rawCommand)
+RegisterCommand('zonemessage', function(source, args, rawCommand)
     local xPlayer = ESX.GetPlayerFromId(source)
     local pos = xPlayer.getCoords()
     local time = tonumber(args[1])
@@ -81,7 +81,7 @@ RegisterCommand('entornozona', function(source, args, rawCommand)
 end, false)
 
 
-RegisterCommand('entornozonaperma', function(source, args, rawCommand)
+RegisterCommand('permazonemessage', function(source, args, rawCommand)
     local xPlayer = ESX.GetPlayerFromId(source)
     local pos = xPlayer.getCoords()
     local xPlayers = ESX.GetPlayers() 
