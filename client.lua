@@ -1,3 +1,7 @@
+local entornos = {}
+local done = {}
+local timetodelete = {}
+
 ESX = nil 
 
 Citizen.CreateThread(function() 
@@ -7,11 +11,6 @@ Citizen.CreateThread(function()
     end 
     getEntornos()
 end)
-
-local entornos = {}
-local done = {}
-local timetodelete = {}
-
 
 RegisterNetEvent('guille_entornozona:updateentornos')
 AddEventHandler('guille_entornozona:updateentornos', function()
@@ -31,14 +30,14 @@ Citizen.CreateThread(function()
 
     while true do
         Citizen.Wait(1000)
-        local ped = PlayerPedId(-1)
-        local pcoords = GetEntityCoords(ped)
+        local _ped = PlayerPedId()
+        local _pcoords = GetEntityCoords(_ped)
 
         for k,v in pairs(entornos) do
             if v.pos ~= nil then
-                local dist = GetDistanceBetweenCoords(pcoords.x, pcoords.y, pcoords.z, v.pos.x, v.pos.y, v.pos.z, true)
+                local _distance = #(vector3(v.pos.x, v.pos.y, v.pos.z) - vector3(_pcoords))
 
-                if dist < Config.DistanceToEntorno then
+                if _distance < Config.DistanceToEntorno then
                     if done[k] ~= true then
                         TriggerEvent('chat:addMessage', {args = {'Zone message: ', {"ID: " .. v.id .. " " , " Message: " .. v.text}}, color = {200, 20, 20}})
                         done[k] = true
